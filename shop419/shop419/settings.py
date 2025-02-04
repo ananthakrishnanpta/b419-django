@@ -117,6 +117,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+# configuring the user-uploaded media storage location
+# in development server, we are going to use a local folder inside the project 
+# to store the media. When deploying, we can replace the filepath 
+# with a url to the media server
+
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL = '/'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
