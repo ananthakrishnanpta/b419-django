@@ -24,7 +24,13 @@ def homeView(request):
 def aboutView(request):
 
     context = {
-
+        'name' : "krishna",
+        'students' : [
+            "suraj",
+            "shivani",
+            "deepak"
+            ],
+        'slept' : True
     }
     template = loader.get_template('about.html')
     return HttpResponse(template.render(context, request))

@@ -6,16 +6,24 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- accessing values -->
+    {{name}}
+
+    <!-- loops -->
+    <ul>
+        {% for student in students %}
+            <li>{{student}}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Conditionals -->
+     {% if slept %}
+     I slept
+     {% else %}
+     Did not sleep
+     {% endif %}
     
-    About the site.... 
-    yeay
-    yeay
-    yeay
-    yeay
-    yeay
-    yeay
-    yeay
-    yeay
     
+
 </body>
 </html>

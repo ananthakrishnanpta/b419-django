@@ -34,7 +34,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="{% url 'aboutpage' %}">About</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -62,10 +62,39 @@
             </div>
         </nav>
     </header>
+
     <main>
         <div class="container-fluid">
+            <table class="table" data-bs-theme="dark" bg-dark>
+                <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Pic path</th>
+                    <th>Thumbnail</th>
+                    <th>Stock</th>
+                    <th>Description</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                {% for product in product_list %}
+                    <tr>
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.pic}}</td>
+                        <td><img src="{{product.pic}}" height="20px" alt=""></td>
+                        <td>{{product.stock}}</td>
+                        <td>{{product.desc}}</td>
+                        <td><button class="btn btn-primary">Add to Cart</button></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+          
+            </table>
         </div>
     </main>
+
     <footer class="position-fixed bottom-0 start-0 end-0 text-center bg-secondary-subtle">
         &copy; 2025
     </footer>
