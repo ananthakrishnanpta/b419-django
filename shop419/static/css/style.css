@@ -9,9 +9,16 @@ body {
         height: 50px;
         nav {
             height: 100%;
-            div,container-fluid {
+            div.container-fluid {
                 height: 100%;
-                a 
+                a.navbar-brand {
+                    img {
+                        height: 100%;
+                        background-color: white;
+                        border-radius: 50%;
+
+                    }
+                 }
             }
         }
     }

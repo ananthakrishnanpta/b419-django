@@ -21,4 +21,10 @@ def homeView(request):
     template = loader.get_template('home.html')
     return HttpResponse(template.render(context, request))
 
-    
+def aboutView(request):
+
+    context = {
+
+    }
+    template = loader.get_template('about.html')
+    return HttpResponse(template.render(context, request))
