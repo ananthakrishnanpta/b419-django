@@ -14,9 +14,10 @@ def homeView(request):
     products = Product.objects.all() # select * from Product;
     # creating a context dictionary to be used to render the template with info
     context = {
-        'product_list' : products # the key we create here, 
+        'product_list' : products, # the key we create here, 
                                 # will be available as a variable in template design
                                 # in 'home.html'
+        'current_page' : 'home'
     }
     template = loader.get_template('home.html')
     return HttpResponse(template.render(context, request))
@@ -24,13 +25,7 @@ def homeView(request):
 def aboutView(request):
 
     context = {
-        'name' : "krishna",
-        'students' : [
-            "suraj",
-            "shivani",
-            "deepak"
-            ],
-        'slept' : True
+        'current_page' : 'about'
     }
     template = loader.get_template('about.html')
     return HttpResponse(template.render(context, request))

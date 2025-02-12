@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!-- accessing values -->
-    {{name}}
+{% extends 'base.html' %}
 
-    <!-- loops -->
+
+{% block title %}
+About 
+{% endblock %}
+
+{% block content %}
     <ul>
         {% for student in students %}
             <li>{{student}}</li>
@@ -23,7 +19,4 @@
      Did not sleep
      {% endif %}
     
-    
-
-</body>
-</html>
+{% endblock %}
