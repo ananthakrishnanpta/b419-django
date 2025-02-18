@@ -78,6 +78,7 @@ class DeleteProduct(DeleteView):
 def searchView(request):
     query = request.GET.get('search_text') 
     # fetch the query text from GET request 
+    # This runs 'SELECT * FROM product WHERE name like '%<query>%';
     
     results = Product.objects.filter(name__icontains = query) 
     # collect the product objects matching the name
