@@ -9,7 +9,7 @@ Delete Product
         The product : {{product.name}} will be deleted...
     </p>
 </div>
-<form method="post" enctype="multipart/form-data" class="form text-center">
+<form method="post" class="form text-center">
     {% csrf_token %}
 
     {{ form.as_p }}

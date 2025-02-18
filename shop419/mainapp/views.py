@@ -71,3 +71,20 @@ class DeleteProduct(DeleteView):
     model = Product
     template_name = 'delProduct.html'
     success_url = reverse_lazy('homepage')
+
+
+## Search results
+
+def searchView(request):
+    query = request.GET.get('search_text') 
+    # fetch the query text from GET request 
+    
+    results = Product.objects.filter(name__icontains = query) 
+    # collect the product objects matching the name
+    
+    context = {
+        'items' : results,
+        'query' : query
+    }
+    template = loader.get_template('searchResults.html')
+    return HttpResponse(template.render(context, request))

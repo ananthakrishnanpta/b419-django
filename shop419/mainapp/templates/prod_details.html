@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 
-
 {% block title %}
 {{ prod.name }}
 {% endblock %}
-
 
 {% block content %}
 <div class="row">
@@ -18,7 +16,8 @@
         </div>
         <div class="row">
             {% if user.is_staff %}
-            <a href="" class="btn btn-secondary">Edit Product</a>
+            <a href="{% url 'edit_prod' prod.pk %}" class="btn btn-secondary">Edit Product</a>
+            <a href="{% url 'del_prod' prod.pk %}" class="btn btn-danger">Delete Product</a>
             {% else %}
             <a href="" class="btn btn-secondary">Add to Cart</a>
             {% endif %}
