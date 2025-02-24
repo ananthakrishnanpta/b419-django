@@ -79,7 +79,6 @@ def searchView(request):
     query = request.GET.get('search_text') 
     # fetch the query text from GET request 
     
-    
     results = Product.objects.filter(name__icontains = query) 
     # collect the product objects matching the name
     # This runs 'SELECT * FROM product WHERE name like '%<query>%';
@@ -92,3 +91,4 @@ def searchView(request):
     }
     template = loader.get_template('searchResults.html')
     return HttpResponse(template.render(context, request))
+    

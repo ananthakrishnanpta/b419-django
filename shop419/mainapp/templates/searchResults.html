@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search | {{query}}
+{% endblock %}
+
+{% block content %}
+
+<h2>Search results for {{query}}</h2>
+
+<div class="container-fluid">
+    <table class="table" data-bs-theme="dark">
+        <thead >
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Pic path</th>
+            <th>Thumbnail</th>
+            <th>Stock</th>
+            <th>Description</th>
+            <th></th>
+        </thead>
+        <tbody>
+        {% for product in items %}
+            <tr>
+                <td>{{product.id}}</td>
+                <td>
+                    <a href="{% url 'prod_details' product.id %}">
+                    {{product.name}}
+                    </a>
+                </td>
+                <td>{{product.price}}</td>
+                <td>{{product.pic.url}}</td>
+                <td><img src="{{product.pic.url}}" height="20px" alt=""></td>
+                <td>{{product.stock}}</td>
+                <td>{{product.desc}}</td>
+                <td><button class="btn btn-primary">Add to Cart</button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+  
+    </table>
+</div>
+
+{% endblock %}

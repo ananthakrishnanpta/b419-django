@@ -33,7 +33,7 @@ Home
                         <td><img src="{{product.pic}}" height="20px" alt=""></td>
                         <td>{{product.stock}}</td>
                         <td>{{product.desc}}</td>
-                        <td><button class="btn btn-primary">Add to Cart</button></td>
+                        <td><a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
