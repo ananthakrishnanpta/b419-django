@@ -52,7 +52,7 @@ def remFromCart(request, cart_item_id):
     return redirect('view_cart')
 
 
-
+# function based views for implementing the API endpoints for cart quantity updations
 @login_required
 def addQuantity(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
