@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from mainapp.models import Product
 from .models import CartItem
 
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 # C - Creating cart items
 
+@login_required
 def addToCart(request, product_id):
     this_product = Product.objects.get(id = product_id) # fetching the product object
     # When adding product to cart, we need to check if the same user has added the same product
@@ -20,7 +22,7 @@ def addToCart(request, product_id):
     return redirect('view_cart')
 
 # R - Read Cartitems
-
+@login_required
 def viewCart(request):
     template = 'cart.html'
     cart_items = CartItem.objects.filter(user = request.user) 
@@ -33,3 +35,11 @@ def viewCart(request):
     }
     return render( request, template, context)
 
+
+# D
+
+def remFromCart(request, cart_item_id):
+    this_cart_item = CartItem.objects.get(id = cart_item_id)
+    this_cart_item.delete() # deletes the associated record as well as the cartitem obj in memory
+    
+    return redirect('view_cart')

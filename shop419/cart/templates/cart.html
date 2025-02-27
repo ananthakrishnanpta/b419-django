@@ -8,6 +8,7 @@
 {% block content %}
 
 <div class="container-fluid">
+    {% if cart_items %}
     <table class="table" data-bs-theme="dark">
         <thead >
             <th></th>
@@ -22,20 +23,29 @@
             <tr>
                 <td><img src="{{item.product.pic.url}}" height="20px" alt=""></td>
                 <td>
-                    <a href="{% url 'prod_details' item.id %}">
-                    {{item.name}}
+                    <a href="{% url 'prod_details' item.product.id %}">
+                    {{item.product.name}}
                     </a>
                 </td>
                 
                 <td>{{item.product.price}}</td>                
-                <td>{{item.quantity}}</td>
+                <td class="row">
+                    <button class="col btn btn-secondary">-</button>
+                    <p class="col">{{item.quantity}}</p>
+                    <button class="col btn btn-secondary">+</button>
+                </td>
                 <td>{{item.get_total_price}}</td>
-                <td><a href="" class="btn btn-danger">Remove From Cart</a></td>
+                <td><a href="{% url 'rem_from_cart' item.id %}" class="btn btn-danger">Remove From Cart</a></td>
             </tr>
         {% endfor %}
         </tbody>
-  
     </table>
+    {% else %}
+
+    <div class="text-center text-warning">Cart is Empty</div>
+    {% endif %}
+
+    <a href="{% url 'homepage' %}" class="btn btn-primary">Shop More!!!</a>
 </div>
 
 {% endblock %}
