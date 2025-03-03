@@ -59,7 +59,12 @@ def addQuantity(request, cart_item_id):
     cart_item.quantity += 1
     cart_item.save()
     overall_total = sum(item.get_total_price() for item in CartItem.objects.filter(user=request.user))
-    return JsonResponse({'quantity': cart_item.quantity, 'total_price': cart_item.get_total_price(), 'overall_total': overall_total})
+    context = {
+        'quantity': cart_item.quantity, 
+        'total_price': cart_item.get_total_price(), 
+        'overall_total': overall_total
+        }
+    return JsonResponse(context)
 
 @login_required
 def remQuantity(request, cart_item_id):
@@ -68,8 +73,17 @@ def remQuantity(request, cart_item_id):
         cart_item.quantity -= 1
         cart_item.save()
         overall_total = sum(item.get_total_price() for item in CartItem.objects.filter(user=request.user))
-        return JsonResponse({'quantity': cart_item.quantity, 'total_price': cart_item.get_total_price(), 'overall_total': overall_total})
+        context = {
+            'quantity': cart_item.quantity, 
+            'total_price': cart_item.get_total_price(), 
+            'overall_total': overall_total}
+        return JsonResponse(context)
     else:
         cart_item.delete()
         overall_total = sum(item.get_total_price() for item in CartItem.objects.filter(user=request.user))
-        return JsonResponse({'quantity': 0, 'total_price': 0, 'overall_total': overall_total})
+        context = {
+            'quantity': 0, 
+            'total_price': 0, 
+            'overall_total': overall_total
+            }
+        return JsonResponse(context)

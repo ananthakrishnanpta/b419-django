@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')), # to include the paths configured in the app, here
     path('',include('cart.urls')),
+    path('', include('orders.urls')),
+    path('',include('payments.urls')),
     path('auth/', include('authentication.urls')), # including our authentication app urls
     path('auth/', include('django.contrib.auth.urls')) # including django's inbuilt auth urls
 ]

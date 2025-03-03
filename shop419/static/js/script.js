@@ -24,7 +24,7 @@
             }
     
             // Update overall total price
-            overallTotalElement.textContent = `${data.overall_total.toFixed(1)}`;
+            overallTotalElement.textContent = `${data.overall_total.toFixed(2)}`;
         })
         .catch(error => console.error('Error:', error));
     }

@@ -65,7 +65,7 @@ class UpdateProduct(UpdateView):
     # overriding a method to produce dynamic redirection according to product id.
     def get_success_url(self):
         return reverse('prod_details', kwargs = {'pk' : self.object.pk})
-
+    
 # Delete 
 class DeleteProduct(DeleteView):
     model = Product
